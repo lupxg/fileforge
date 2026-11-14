@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/docs/">
+    <File Path="ARCHITECTURE.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Fileforge.Application/Fileforge.Application.csproj" />
+    <Project Path="src/Fileforge.Domain/Fileforge.Domain.csproj" />
+    <Project Path="src/Fileforge.Infrastructure/Fileforge.Infrastructure.csproj" />
+    <Project Path="src/Fileforge.Web/Fileforge.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Fileforge.IntegrationTests/Fileforge.IntegrationTests.csproj" />
+    <Project Path="tests/Fireforge.UnitTests/Fileforge.UnitTests.csproj" Id="b6754a1a-6c57-4c4d-bfb8-7db16fbb6543" />
+  </Folder>
+</Solution>

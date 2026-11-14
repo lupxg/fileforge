@@ -1,0 +1,1 @@
+# This document describes the architecure of the project.
