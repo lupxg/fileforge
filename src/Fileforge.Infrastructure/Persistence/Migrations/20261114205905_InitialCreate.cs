@@ -12,11 +12,15 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "fileforge");
+
             migrationBuilder.AlterDatabase()
                 .Annotation("Npgsql:PostgresExtension:vector", ",,");
 
             migrationBuilder.CreateTable(
                 name: "conversations",
+                schema: "fileforge",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -29,6 +33,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "document_chunks",
+                schema: "fileforge",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -45,6 +50,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "documents",
+                schema: "fileforge",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -65,6 +71,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "messages",
+                schema: "fileforge",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -80,6 +87,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "message_sources",
+                schema: "fileforge",
                 columns: table => new
                 {
                     message_id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -92,12 +100,14 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_message_sources_document_chunks_chunk_id",
                         column: x => x.chunk_id,
+                        principalSchema: "fileforge",
                         principalTable: "document_chunks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_message_sources_messages_message_id",
                         column: x => x.message_id,
+                        principalSchema: "fileforge",
                         principalTable: "messages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -105,27 +115,32 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_document_chunks_document_id_chunk_index",
+                schema: "fileforge",
                 table: "document_chunks",
                 columns: new[] { "document_id", "chunk_index" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_documents_CreatedAtUtc",
+                schema: "fileforge",
                 table: "documents",
                 column: "CreatedAtUtc");
 
             migrationBuilder.CreateIndex(
                 name: "IX_documents_Status",
+                schema: "fileforge",
                 table: "documents",
                 column: "Status");
 
             migrationBuilder.CreateIndex(
                 name: "IX_message_sources_chunk_id",
+                schema: "fileforge",
                 table: "message_sources",
                 column: "chunk_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_messages_ConversationId_CreatedAtUtc",
+                schema: "fileforge",
                 table: "messages",
                 columns: new[] { "ConversationId", "CreatedAtUtc" });
         }
@@ -134,19 +149,24 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "conversations");
+                name: "conversations",
+                schema: "fileforge");
 
             migrationBuilder.DropTable(
-                name: "documents");
+                name: "documents",
+                schema: "fileforge");
 
             migrationBuilder.DropTable(
-                name: "message_sources");
+                name: "message_sources",
+                schema: "fileforge");
 
             migrationBuilder.DropTable(
-                name: "document_chunks");
+                name: "document_chunks",
+                schema: "fileforge");
 
             migrationBuilder.DropTable(
-                name: "messages");
+                name: "messages",
+                schema: "fileforge");
         }
     }
 }
