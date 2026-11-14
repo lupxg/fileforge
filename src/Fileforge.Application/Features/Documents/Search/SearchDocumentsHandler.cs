@@ -1,6 +1,6 @@
-﻿using FileForge.Application.Interfaces;
+﻿using Fileforge.Application.Interfaces;
 
-namespace FileForge.Application.Features.Documents.Search;
+namespace Fileforge.Application.Features.Documents.Search;
 
 public sealed class SearchDocumentsHandler(
     IEmbeddingService embeddingService,

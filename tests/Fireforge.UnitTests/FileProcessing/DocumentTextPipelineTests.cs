@@ -1,7 +1,7 @@
-﻿using FileForge.Application.Features.Documents.Processing;
-using FileForge.Infrastructure.FileProcessing;
+﻿using Fileforge.Application.Features.Documents.Processing;
+using Fileforge.Infrastructure.FileProcessing;
 
-namespace FireForge.UnitTests.FileProcessing;
+namespace Fileforge.UnitTests.FileProcessing;
 
 public sealed class DocumentTextPipelineTests
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Domain.Enums;
+namespace Fileforge.Domain.Enums;
 
 public enum DocumentStatus
 {

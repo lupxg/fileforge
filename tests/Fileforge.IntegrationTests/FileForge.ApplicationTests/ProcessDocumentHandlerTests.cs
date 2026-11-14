@@ -1,19 +1,18 @@
-﻿using FileForge.Application.Abstractions;
-using FileForge.Application.Exceptions;
-using FileForge.Application.Features.Documents.ProcessDocument;
-using FileForge.Application.Features.Documents.Processing;
-using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
-using FileForge.Domain.Enums;
-using FileForge.Infrastructure.FileProcessing;
-using FileForge.Infrastructure.Persistence;
-using FileForge.IntegrationTests.Fixtures;
+﻿using Fileforge.Application.Abstractions;
+using Fileforge.Application.Exceptions;
+using Fileforge.Application.Features.Documents.ProcessDocument;
+using Fileforge.Application.Features.Documents.Processing;
+using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
+using Fileforge.Domain.Enums;
+using Fileforge.Infrastructure.FileProcessing;
+using Fileforge.Infrastructure.Persistence;
+using Fileforge.IntegrationTests.Fixtures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
-using Xunit;
 
-namespace FileForge.IntegrationTests.FileForge.ApplicationTests;
+namespace Fileforge.IntegrationTests.FileForge.ApplicationTests;
 
 internal sealed class FakeTextExtractor(
     string? result = null,

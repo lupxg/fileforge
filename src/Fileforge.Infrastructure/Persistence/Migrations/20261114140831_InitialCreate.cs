@@ -4,7 +4,7 @@ using Pgvector;
 
 #nullable disable
 
-namespace FileForge.Infrastructure.Persistence.Migrations
+namespace Fileforge.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -36,7 +36,7 @@ namespace FileForge.Infrastructure.Persistence.Migrations
                     chunk_index = table.Column<int>(type: "integer", nullable: false),
                     content = table.Column<string>(type: "text", nullable: false),
                     token_count = table.Column<int>(type: "integer", nullable: false),
-                    embedding = table.Column<Vector>(type: "vector", nullable: false)
+                    embedding = table.Column<Vector>(type: "vector(1536)", nullable: false)
                 },
                 constraints: table =>
                 {

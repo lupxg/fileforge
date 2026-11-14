@@ -1,6 +1,6 @@
-﻿using FileForge.Domain.Entities;
+﻿using Fileforge.Domain.Entities;
 
-namespace FileForge.Application.Interfaces;
+namespace Fileforge.Application.Interfaces;
 
 public interface IDocumentRepository
 {

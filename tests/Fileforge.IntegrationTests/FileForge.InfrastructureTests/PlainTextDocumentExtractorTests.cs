@@ -1,9 +1,9 @@
-﻿using FileForge.Infrastructure.FileProcessing;
+﻿using Fileforge.Infrastructure.FileProcessing;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.IntegrationTests.FileForge.InfrastructureTests;
+namespace Fileforge.IntegrationTests.FileForge.InfrastructureTests;
 
 public sealed class PlainTextDocumentExtractorTests
 {

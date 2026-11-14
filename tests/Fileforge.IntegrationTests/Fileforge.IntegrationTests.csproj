@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FileForge.Infrastructure\FileForge.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Fileforge.Infrastructure\Fileforge.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

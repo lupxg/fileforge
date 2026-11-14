@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Application.Interfaces;
+namespace Fileforge.Application.Interfaces;
 
 public interface IDocumentTextExtractor
 {

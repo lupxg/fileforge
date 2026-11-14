@@ -1,8 +1,8 @@
-﻿using FileForge.Domain.Enums;
-using FileForge.Domain.Exceptions;
+﻿using Fileforge.Domain.Enums;
+using Fileforge.Domain.Exceptions;
 
 
-namespace FileForge.Domain.Entities;
+namespace Fileforge.Domain.Entities;
 
 public class Document
 {

@@ -1,12 +1,12 @@
-﻿using FileForge.Application.Abstractions;
-using FileForge.Application.Exceptions;
-using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
+﻿using Fileforge.Application.Abstractions;
+using Fileforge.Application.Exceptions;
+using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
 using Microsoft.Extensions.Logging;
 using System.Data;
 
 
-namespace FileForge.Application.Features.Documents.ProcessDocument;
+namespace Fileforge.Application.Features.Documents.ProcessDocument;
 
 public class ProcessDocumentHandler
 {

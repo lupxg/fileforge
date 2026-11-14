@@ -1,5 +1,5 @@
 ﻿
-namespace FileForge.Application.Exceptions;
+namespace Fileforge.Application.Exceptions;
 
 public class NotFoundException : Exception
 {

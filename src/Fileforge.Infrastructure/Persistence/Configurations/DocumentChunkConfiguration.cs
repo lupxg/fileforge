@@ -1,9 +1,9 @@
-﻿using FileForge.Domain.Entities;
+﻿using Fileforge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FileForge.Infrastructure.Persistence.Configurations;
+namespace Fileforge.Infrastructure.Persistence.Configurations;
 
 public sealed class DocumentChunkConfiguration
     : IEntityTypeConfiguration<DocumentChunk>

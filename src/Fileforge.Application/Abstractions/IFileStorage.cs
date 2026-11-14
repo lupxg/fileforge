@@ -1,5 +1,5 @@
 ﻿
-namespace FileForge.Application.Abstractions;
+namespace Fileforge.Application.Abstractions;
 
 public interface IFileStorage
 {

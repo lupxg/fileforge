@@ -1,8 +1,8 @@
-﻿using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
+﻿using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FileForge.Infrastructure.Persistence.Repositories;
+namespace Fileforge.Infrastructure.Persistence.Repositories;
 
 public class ChunkRepository : IChunkRepository
 {

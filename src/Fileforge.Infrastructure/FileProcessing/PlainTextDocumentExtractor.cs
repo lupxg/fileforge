@@ -1,9 +1,9 @@
-﻿using FileForge.Application.Interfaces;
+﻿using Fileforge.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Infrastructure.FileProcessing;
+namespace Fileforge.Infrastructure.FileProcessing;
 
 public sealed class PlainTextDocumentExtractor : IDocumentTextExtractor
 {

@@ -1,18 +1,15 @@
-﻿using FileForge.Application.Features.Documents.GetDocument;
-using FileForge.Application.Features.Documents.Search;
-using FileForge.Application.Features.Documents.UploadDocument;
+﻿using Fileforge.Application.Features.Documents.GetDocument;
+using Fileforge.Application.Features.Documents.Search;
+using Fileforge.Application.Features.Documents.UploadDocument;
 
-namespace FileForge.Web.Endpoints;
+namespace Fileforge.Web.Endpoints;
 
 public static class DocumentEndpoints
 {
     private const long MaxFileSizeBytes = 10 * 1024 * 1024;
 
-    public static IEndpointRouteBuilder MapDocumentEndpoints(
-        this IEndpointRouteBuilder endpoints)
+    public static IEndpointRouteBuilder MapDocumentEndpoints(this IEndpointRouteBuilder endpoints)
     {
-
-
 
         endpoints.MapGet("/api/health", () =>
         {
@@ -25,73 +22,58 @@ public static class DocumentEndpoints
 
 
 
-        endpoints.MapPost("/api/documents",
-            async (
-                IFormFile? file,
-                UploadDocumentHandler handler,
-                CancellationToken ct) =>
+        endpoints.MapPost("/api/documents", async (IFormFile? file, UploadDocumentHandler handler, CancellationToken ct) =>
+        {
+            if (file is null || file.Length == 0)
             {
-                if (file is null || file.Length == 0)
+                return Results.BadRequest(new
                 {
-                    return Results.BadRequest(new
-                    {
-                        Error = "A non-empty file is required."
-                    });
-                }
+                    Error = "A non-empty file is required."
+                });
+            }
 
-                if (file.Length > MaxFileSizeBytes)
-                {
-                    return Results.Problem(
-                        statusCode: StatusCodes.Status413PayloadTooLarge,
-                        title: "File too large",
-                        detail: "The maximum file size is 10 MiB.");
-                }
-
-                await using var stream = file.OpenReadStream();
-
-                var document = await handler.HandleAsync(
-                    stream,
-                    file.FileName,
-                    file.ContentType,
-                    file.Length,
-                    ct);
-
-                return Results.Created(
-                    $"/api/documents/{document.Id}",
-                    new
-                    {
-                        document.Id,
-                        document.FileName,
-                        Status = document.Status.ToString(),
-                        document.SizeInBytes,
-                        document.CreatedAtUtc
-                    });
-            })
-            .WithName("UploadDocument")
-            .WithTags("Documents")
-            .DisableAntiforgery();
-
-
-
-
-        endpoints.MapGet(
-                "/api/documents/{id:guid}",
-            async (
-                Guid id,
-                GetDocumentHandler handler,
-                CancellationToken ct) =>
+            if (file.Length > MaxFileSizeBytes)
             {
-                var document = await handler.HandleAsync(id, ct);
+                return Results.Problem(
+                    statusCode: StatusCodes.Status413PayloadTooLarge,
+                    title: "File too large",
+                    detail: "The maximum file size is 10 MiB.");
+            }
 
-                return document is null
-                    ? Results.NotFound(new
-                    {
-                        Error = "Document not found."
-                    })
-                    : Results.Ok(document);
-            })
-            .WithName("GetDocument")
-            .WithTags("Documents");
+            await using var stream = file.OpenReadStream();
+
+            var document = await handler.HandleAsync(stream, file.FileName, file.ContentType, file.Length, ct);
+
+            return Results.Created($"/api/documents/{document.Id}",
+                new
+                {
+                    document.Id,
+                    document.FileName,
+                    Status = document.Status.ToString(),
+                    document.SizeInBytes,
+                    document.CreatedAtUtc
+                });
+        })
+        .WithName("UploadDocument")
+        .WithTags("Documents")
+        .DisableAntiforgery();
+
+
+
+
+        endpoints.MapGet("/api/documents/{id:guid}", async (Guid id, GetDocumentHandler handler, CancellationToken ct) =>
+        {
+            var document = await handler.HandleAsync(id, ct);
+
+            return document is null
+                ? Results.NotFound(new
+                {
+                    Error = "Document not found."
+                })
+                : Results.Ok(document);
+        })
+        .WithName("GetDocument")
+        .WithTags("Documents");
 
 
 

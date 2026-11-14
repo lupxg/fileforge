@@ -1,23 +1,20 @@
-﻿using FileForge.Application.Abstractions;
-using FileForge.Application.Features.Documents.Processing;
-using FileForge.Application.Interfaces;
-using FileForge.Infrastructure.Embeddings;
-using FileForge.Infrastructure.FileProcessing;
-using FileForge.Infrastructure.FileStorage;
-using FileForge.Infrastructure.Persistence;
-using FileForge.Infrastructure.Persistence.Repositories;
+﻿using Fileforge.Application.Abstractions;
+using Fileforge.Application.Features.Documents.Processing;
+using Fileforge.Application.Interfaces;
+using Fileforge.Infrastructure.Embeddings;
+using Fileforge.Infrastructure.FileProcessing;
+using Fileforge.Infrastructure.FileStorage;
+using Fileforge.Infrastructure.Persistence;
+using Fileforge.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FileForge.Infrastructure;
+namespace Fileforge.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(
-        this IServiceCollection services, 
-        IConfiguration configuration) 
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration) 
     {
         var connectionString = configuration.GetConnectionString("FileForgeConnection") 
             ?? throw new InvalidOperationException("Connection string not found");
@@ -35,18 +32,12 @@ public static class DependencyInjection
     }
 
 
-    public static void ConfigureDatabase(
-        DbContextOptionsBuilder options,
-        string connectionString)
+    public static void ConfigureDatabase(DbContextOptionsBuilder options, string connectionString)
     {
-        options.UseNpgsql(
-            connectionString,
-            npgsql => npgsql.UseVector());
+        options.UseNpgsql(connectionString, npgsql => npgsql.UseVector());
     }
 
-    public static IServiceCollection AddOpenAIEmbeddings(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    public static IServiceCollection AddOpenAIEmbeddings(this IServiceCollection services, IConfiguration configuration)
     {
         var apiKey = configuration["OPENAI_API_KEY"];
 

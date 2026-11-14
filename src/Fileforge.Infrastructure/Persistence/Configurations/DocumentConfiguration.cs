@@ -1,8 +1,8 @@
-﻿using FileForge.Domain.Entities;
+﻿using Fileforge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FileForge.Infrastructure.Persistence.Configurations;
+namespace Fileforge.Infrastructure.Persistence.Configurations;
 
 public sealed class DocumentConfiguration : IEntityTypeConfiguration<Document>
 {

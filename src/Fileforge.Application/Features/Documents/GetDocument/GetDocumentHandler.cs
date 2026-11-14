@@ -1,6 +1,6 @@
-﻿using FileForge.Application.Interfaces;
+﻿using Fileforge.Application.Interfaces;
 
-namespace FileForge.Application.Features.Documents.GetDocument;
+namespace Fileforge.Application.Features.Documents.GetDocument;
 
 public sealed class GetDocumentHandler(IDocumentRepository documents)
 {

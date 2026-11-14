@@ -1,12 +1,10 @@
-﻿using FileForge.Domain.Entities;
+﻿using Fileforge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FileForge.Infrastructure.Persistence;
+namespace Fileforge.Infrastructure.Persistence;
 
-public class FileForgeDbContext : DbContext
+public class FileForgeDbContext(DbContextOptions<FileForgeDbContext> options) : DbContext(options)
 {
-    public FileForgeDbContext(DbContextOptions<FileForgeDbContext> options) : base(options) { }
-
     // DB sets.
     public DbSet<Document> Documents => Set<Document>();
     public DbSet<DocumentChunk> DocumentChunks => Set<DocumentChunk>();
@@ -15,14 +13,12 @@ public class FileForgeDbContext : DbContext
     public DbSet<Conversation> Conversations => Set<Conversation>();
 
 
-    protected override void OnModelCreating(
-        ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.HasPostgresExtension("vector");
 
-        modelBuilder.ApplyConfigurationsFromAssembly(
-            typeof(FileForgeDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(FileForgeDbContext).Assembly);
     }
 }

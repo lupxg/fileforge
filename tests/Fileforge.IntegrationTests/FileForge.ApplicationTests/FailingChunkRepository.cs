@@ -1,11 +1,10 @@
-﻿using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
+﻿using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
 
 
-namespace FileForge.IntegrationTests.FileForge.ApplicationTests;
+namespace Fileforge.IntegrationTests.FileForge.ApplicationTests;
 
-internal sealed class FailingChunkRepository(
-    IChunkRepository inner) : IChunkRepository
+internal sealed class FailingChunkRepository(IChunkRepository inner) : IChunkRepository
 {
     public Task DeleteByDocumentIdAsync(
         Guid id,
@@ -33,5 +32,10 @@ internal sealed class FailingChunkRepository(
             documentIds,
             topK,
             ct);
+    }
+
+    public Task<IReadOnlyList<ScoredChunk>> SearchAllAsync(ReadOnlyMemory<float> queryEmbedding, int topK, CancellationToken ct = default) 
+    {
+        return null;
     }
 }

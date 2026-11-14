@@ -1,8 +1,6 @@
-using FileForge.Application;
-using FileForge.Application.Interfaces;
-using FileForge.Infrastructure;
-using FileForge.Infrastructure.Embeddings;
-using FileForge.Web.Endpoints;
+using Fileforge.Application;
+using Fileforge.Infrastructure;
+using Fileforge.Web.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 

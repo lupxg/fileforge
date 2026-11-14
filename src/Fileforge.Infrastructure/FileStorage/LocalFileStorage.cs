@@ -1,6 +1,6 @@
-﻿using FileForge.Application.Abstractions;
+﻿using Fileforge.Application.Abstractions;
 
-namespace FileForge.Infrastructure.FileStorage;
+namespace Fileforge.Infrastructure.FileStorage;
 
 public sealed class LocalFileStorage : IFileStorage
 {

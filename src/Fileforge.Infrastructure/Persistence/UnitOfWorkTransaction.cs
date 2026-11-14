@@ -1,10 +1,10 @@
-﻿using FileForge.Application.Abstractions;
+﻿using Fileforge.Application.Abstractions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Infrastructure.Persistence;
+namespace Fileforge.Infrastructure.Persistence;
 
 public sealed class UnitOfWorkTransaction : IUnitOfWorkTransaction
 {

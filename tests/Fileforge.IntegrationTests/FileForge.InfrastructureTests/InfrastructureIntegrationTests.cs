@@ -1,13 +1,13 @@
-﻿using FileForge.Application.Abstractions;
-using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
-using FileForge.Infrastructure.Persistence;
-using FileForge.Infrastructure.Persistence.Repositories;
-using FileForge.IntegrationTests.Fixtures;
+﻿using Fileforge.Application.Abstractions;
+using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
+using Fileforge.Infrastructure.Persistence;
+using Fileforge.Infrastructure.Persistence.Repositories;
+using Fileforge.IntegrationTests.Fixtures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FileForge.IntegrationTests.FileForge.InfrastructureTests;
+namespace Fileforge.IntegrationTests.FileForge.InfrastructureTests;
 
 
 public sealed class InfrastructureIntegrationTests(PostgresFixture fixture) : IClassFixture<PostgresFixture>

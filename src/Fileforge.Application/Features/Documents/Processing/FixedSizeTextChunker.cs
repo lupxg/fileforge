@@ -1,6 +1,6 @@
-﻿using FileForge.Application.Abstractions;
+﻿using Fileforge.Application.Abstractions;
 
-namespace FileForge.Application.Features.Documents.Processing;
+namespace Fileforge.Application.Features.Documents.Processing;
 
 public sealed class FixedSizeTextChunker : ITextChunker
 {

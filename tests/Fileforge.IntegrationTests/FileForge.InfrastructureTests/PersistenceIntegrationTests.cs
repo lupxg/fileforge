@@ -1,10 +1,10 @@
-﻿using FileForge.Infrastructure.Persistence;
-using FileForge.IntegrationTests.Fixtures;
+﻿using Fileforge.Infrastructure.Persistence;
+using Fileforge.IntegrationTests.Fixtures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace FileForge.IntegrationTests.FileForge.InfrastructureTests;
+namespace Fileforge.IntegrationTests.FileForge.InfrastructureTests;
 
 public sealed class PersistenceIntegrationTests(PostgresFixture fixture) : IClassFixture<PostgresFixture>
 {

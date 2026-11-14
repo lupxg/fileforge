@@ -1,10 +1,10 @@
-﻿using FileForge.Infrastructure;
-using FileForge.Infrastructure.Persistence;
+﻿using Fileforge.Infrastructure;
+using Fileforge.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FileForge.IntegrationTests.Fixtures;
+namespace Fileforge.IntegrationTests.Fixtures;
 
 public sealed class PostgresFixture : IAsyncLifetime
 {
@@ -17,11 +17,8 @@ public sealed class PostgresFixture : IAsyncLifetime
             .AddUserSecrets<PostgresFixture>()
             .Build();
 
-        var testConnectionString =
-            configuration.GetConnectionString("FileForgeTest")
-            ?? throw new InvalidOperationException(
-                "Connection string 'FileForgeTest' was not configured. " +
-                "Set it using .NET User Secrets.");
+        var testConnectionString = configuration.GetConnectionString("FileForgeTest")
+            ?? throw new InvalidOperationException("Connection string 'FileForgeTest' was not configured. Set it using .NET User Secrets.");
 
         // AddInfrastructure expects the key FileForgeConnection.
         // Supply the test connection string under that key.

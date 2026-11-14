@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Application.Features.Documents.Search;
+namespace Fileforge.Application.Features.Documents.Search;
 
 
 public sealed record SearchResultDto(

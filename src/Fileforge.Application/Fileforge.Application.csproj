@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileForge.Domain\FileForge.Domain.csproj" />
+    <ProjectReference Include="..\Fileforge.Domain\Fileforge.Domain.csproj" />
   </ItemGroup>
 
 </Project>

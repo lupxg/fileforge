@@ -1,7 +1,7 @@
-﻿using FileForge.Application.Interfaces;
+﻿using Fileforge.Application.Interfaces;
 using Microsoft.Extensions.AI;
 
-namespace FileForge.Infrastructure.Embeddings;
+namespace Fileforge.Infrastructure.Embeddings;
 
 public sealed class OpenAIEmbeddingService : IEmbeddingService
 {

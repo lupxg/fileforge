@@ -1,7 +1,7 @@
-﻿using FileForge.Application.Features.Documents.Processing;
+﻿using Fileforge.Application.Features.Documents.Processing;
 
 
-namespace FileForge.IntegrationTests.FileForge.ApplicationTests;
+namespace Fileforge.IntegrationTests.FileForge.ApplicationTests;
 
 public sealed class FixedSizeTextChunkerTests
 {

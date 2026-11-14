@@ -1,4 +1,4 @@
-﻿using FileForge.Domain.Entities;
+﻿using Fileforge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Infrastructure.Persistence.Configurations;
+namespace Fileforge.Infrastructure.Persistence.Configurations;
 
 public sealed class ConversationConfiguration : IEntityTypeConfiguration<Conversation>
 {

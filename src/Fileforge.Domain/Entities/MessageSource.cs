@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Domain.Entities;
+namespace Fileforge.Domain.Entities;
 
 public class MessageSource
 {

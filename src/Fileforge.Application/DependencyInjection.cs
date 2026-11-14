@@ -1,10 +1,10 @@
-﻿using FileForge.Application.Features.Documents.GetDocument;
-using FileForge.Application.Features.Documents.Search;
-using FileForge.Application.Features.Documents.UploadDocument;
+﻿using Fileforge.Application.Features.Documents.GetDocument;
+using Fileforge.Application.Features.Documents.Search;
+using Fileforge.Application.Features.Documents.UploadDocument;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FileForge.Application;
+namespace Fileforge.Application;
 
 public static class DependencyInjection
 {

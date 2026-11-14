@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Domain.Exceptions;
+namespace Fileforge.Domain.Exceptions;
 
 public class DomainException : Exception
 {

@@ -1,4 +1,4 @@
-﻿namespace FileForge.Domain.Entities;
+﻿namespace Fileforge.Domain.Entities;
 
 public class Conversation
 {

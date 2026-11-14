@@ -1,9 +1,9 @@
-﻿using FileForge.Application.Abstractions;
-using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
+﻿using Fileforge.Application.Abstractions;
+using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
 
 
-namespace FileForge.Application.Features.Documents.UploadDocument;
+namespace Fileforge.Application.Features.Documents.UploadDocument;
 
 public sealed class UploadDocumentHandler(
     IDocumentRepository documents,

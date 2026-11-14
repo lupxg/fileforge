@@ -1,11 +1,11 @@
-﻿using FileForge.Application.Interfaces;
-using FileForge.Domain.Entities;
+﻿using Fileforge.Application.Interfaces;
+using Fileforge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Infrastructure.Persistence.Repositories;
+namespace Fileforge.Infrastructure.Persistence.Repositories;
 
 public sealed class DocumentRepository : IDocumentRepository
 {

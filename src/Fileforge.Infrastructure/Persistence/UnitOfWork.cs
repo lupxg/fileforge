@@ -1,6 +1,6 @@
-﻿using FileForge.Application.Abstractions;
+﻿using Fileforge.Application.Abstractions;
 
-namespace FileForge.Infrastructure.Persistence;
+namespace Fileforge.Infrastructure.Persistence;
 
 public sealed class UnitOfWork : IUnitOfWork
 {

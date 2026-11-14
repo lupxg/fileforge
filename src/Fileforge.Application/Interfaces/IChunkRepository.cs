@@ -1,9 +1,9 @@
-﻿using FileForge.Domain.Entities;
+﻿using Fileforge.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileForge.Application.Interfaces;
+namespace Fileforge.Application.Interfaces;
 
 public record ScoredChunk(DocumentChunk Chunk, double Score);
 

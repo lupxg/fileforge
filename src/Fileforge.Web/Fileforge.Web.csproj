@@ -4,11 +4,11 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>adf80f11-370a-46e6-b2a7-36bc9e003edb</UserSecretsId>
+    <UserSecretsId>67737ae2-0eb8-48d8-b2cd-94e7698016c4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileForge.Infrastructure\FileForge.Infrastructure.csproj" />
+    <ProjectReference Include="..\Fileforge.Infrastructure\Fileforge.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

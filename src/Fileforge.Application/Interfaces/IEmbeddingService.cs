@@ -1,5 +1,5 @@
 ﻿
-namespace FileForge.Application.Interfaces;
+namespace Fileforge.Application.Interfaces;
 
 public interface IEmbeddingService
 {
