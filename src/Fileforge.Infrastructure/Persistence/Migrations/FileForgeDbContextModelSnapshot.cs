@@ -18,6 +18,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("fileforge")
                 .HasAnnotation("ProductVersion", "10.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -37,7 +38,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("conversations", (string)null);
+                    b.ToTable("conversations", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.Document", b =>
@@ -87,7 +88,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("Status");
 
-                    b.ToTable("documents", (string)null);
+                    b.ToTable("documents", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.DocumentChunk", b =>
@@ -122,7 +123,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
                     b.HasIndex("DocumentId", "Index")
                         .IsUnique();
 
-                    b.ToTable("document_chunks", (string)null);
+                    b.ToTable("document_chunks", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.Message", b =>
@@ -149,7 +150,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ConversationId", "CreatedAtUtc");
 
-                    b.ToTable("messages", (string)null);
+                    b.ToTable("messages", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.MessageSource", b =>
@@ -170,7 +171,7 @@ namespace Fileforge.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ChunkId");
 
-                    b.ToTable("message_sources", (string)null);
+                    b.ToTable("message_sources", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.MessageSource", b =>

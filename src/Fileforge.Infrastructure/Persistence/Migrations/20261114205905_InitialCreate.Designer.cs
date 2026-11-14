@@ -10,17 +10,18 @@ using Pgvector;
 
 #nullable disable
 
-namespace Fileforge.Infrastructure.Migrations
+namespace Fileforge.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(FileForgeDbContext))]
-    [Migration("20261114140831_InitialCreate")]
-    partial class InitialCreate : Migration
+    [Migration("20261114205905_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("fileforge")
                 .HasAnnotation("ProductVersion", "10.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -40,7 +41,7 @@ namespace Fileforge.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("conversations", (string)null);
+                    b.ToTable("conversations", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.Document", b =>
@@ -90,7 +91,7 @@ namespace Fileforge.Infrastructure.Migrations
 
                     b.HasIndex("Status");
 
-                    b.ToTable("documents", (string)null);
+                    b.ToTable("documents", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.DocumentChunk", b =>
@@ -125,7 +126,7 @@ namespace Fileforge.Infrastructure.Migrations
                     b.HasIndex("DocumentId", "Index")
                         .IsUnique();
 
-                    b.ToTable("document_chunks", (string)null);
+                    b.ToTable("document_chunks", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.Message", b =>
@@ -152,7 +153,7 @@ namespace Fileforge.Infrastructure.Migrations
 
                     b.HasIndex("ConversationId", "CreatedAtUtc");
 
-                    b.ToTable("messages", (string)null);
+                    b.ToTable("messages", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.MessageSource", b =>
@@ -173,7 +174,7 @@ namespace Fileforge.Infrastructure.Migrations
 
                     b.HasIndex("ChunkId");
 
-                    b.ToTable("message_sources", (string)null);
+                    b.ToTable("message_sources", "fileforge");
                 });
 
             modelBuilder.Entity("Fileforge.Domain.Entities.MessageSource", b =>
@@ -191,11 +192,6 @@ namespace Fileforge.Infrastructure.Migrations
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
-        }
-
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            throw new NotImplementedException();
         }
     }
 }

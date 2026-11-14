@@ -5,10 +5,7 @@ using Fileforge.Domain.Entities;
 
 namespace Fileforge.Application.Features.Documents.UploadDocument;
 
-public sealed class UploadDocumentHandler(
-    IDocumentRepository documents,
-    IFileStorage fileStorage,
-    IUnitOfWork unitOfWork)
+public sealed class UploadDocumentHandler(IDocumentRepository documents, IFileStorage fileStorage, IUnitOfWork unitOfWork)
 {
     private const long MaxFileSizeBytes = 10 * 1024 * 1024;
 
@@ -16,12 +13,7 @@ public sealed class UploadDocumentHandler(
     private readonly IFileStorage _fileStorage = fileStorage;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-    public async Task<Document> HandleAsync(
-        Stream content,
-        string fileName,
-        string contentType,
-        long sizeInBytes,
-        CancellationToken ct)
+    public async Task<Document> HandleAsync(Stream content, string fileName, string contentType, long sizeInBytes, CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(content);
 
@@ -32,24 +24,15 @@ public sealed class UploadDocumentHandler(
             throw new ArgumentException("A content type is required.", nameof(contentType));
 
         if (sizeInBytes <= 0 || sizeInBytes > MaxFileSizeBytes)
-            throw new ArgumentOutOfRangeException(
-                nameof(sizeInBytes),
-                $"File size must be between 1 byte and {MaxFileSizeBytes} bytes.");
+            throw new ArgumentOutOfRangeException(nameof(sizeInBytes), $"File size must be between 1 byte and {MaxFileSizeBytes} bytes.");
 
         ct.ThrowIfCancellationRequested();
 
-        var storagePath = await _fileStorage.SaveAsync(
-            content,
-            fileName,
-            ct);
+        var storagePath = await _fileStorage.SaveAsync(content, fileName, ct);
 
         try
         {
-            var document = Document.Create(
-                fileName,
-                contentType,
-                sizeInBytes,
-                storagePath);
+            var document = Document.Create(fileName, contentType, sizeInBytes, storagePath);
 
             await _documents.AddAsync(document, ct);
             await _unitOfWork.SaveChangesAsync(ct);
@@ -65,6 +48,7 @@ public sealed class UploadDocumentHandler(
             }
             catch
             {
+                // To-do: add.
                 // Do not replace the original exception.
                 // Production code should log cleanup failures.
             }

@@ -16,9 +16,8 @@ public class FileForgeDbContext(DbContextOptions<FileForgeDbContext> options) : 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
         modelBuilder.HasPostgresExtension("vector");
-
+        modelBuilder.HasDefaultSchema("fileforge");
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(FileForgeDbContext).Assembly);
     }
 }
