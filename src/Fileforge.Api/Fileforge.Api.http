@@ -1,0 +1,6 @@
+@Fileforge.Api_HostAddress = http://localhost:5132
+
+GET {{Fileforge.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

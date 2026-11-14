@@ -3,10 +3,10 @@
     <File Path="ARCHITECTURE.md" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="src/Fileforge.Api/Fileforge.Api.csproj" Id="f8312172-eb47-47d2-9d50-ea249dcc8978" />
     <Project Path="src/Fileforge.Application/Fileforge.Application.csproj" />
     <Project Path="src/Fileforge.Domain/Fileforge.Domain.csproj" />
     <Project Path="src/Fileforge.Infrastructure/Fileforge.Infrastructure.csproj" />
-    <Project Path="src/Fileforge.Web/Fileforge.Web.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Fileforge.IntegrationTests/Fileforge.IntegrationTests.csproj" />

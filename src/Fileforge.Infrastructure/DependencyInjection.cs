@@ -16,8 +16,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration) 
     {
-        var connectionString = configuration.GetConnectionString("FileForgeConnection") 
-            ?? throw new InvalidOperationException("Connection string not found");
+        var connectionString = configuration.GetConnectionString("FileForgeConnection") ?? throw new InvalidOperationException("Connection string not found");
 
         services.AddScoped<IDocumentRepository, DocumentRepository>();
         services.AddScoped<IChunkRepository, ChunkRepository>();
@@ -34,7 +33,11 @@ public static class DependencyInjection
 
     public static void ConfigureDatabase(DbContextOptionsBuilder options, string connectionString)
     {
-        options.UseNpgsql(connectionString, npgsql => npgsql.UseVector());
+        options.UseNpgsql(connectionString, npgsql => 
+        {
+            npgsql.MigrationsHistoryTable("__EFMigrationsHistory", "fileforge");
+            npgsql.UseVector(); 
+        });
     }
 
     public static IServiceCollection AddOpenAIEmbeddings(this IServiceCollection services, IConfiguration configuration)
@@ -47,11 +50,13 @@ public static class DependencyInjection
         }
 
         #pragma warning disable
+
             services.AddOpenAIEmbeddingGenerator(
                 modelId: OpenAIEmbeddingService.ModelName,
                 apiKey: apiKey,
                 dimensions: OpenAIEmbeddingService.Dimensions
             );
+
         #pragma warning restore
 
         services.AddTransient<IEmbeddingService, OpenAIEmbeddingService>();

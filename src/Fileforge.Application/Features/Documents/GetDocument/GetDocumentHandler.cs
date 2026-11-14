@@ -6,7 +6,7 @@ public sealed class GetDocumentHandler(IDocumentRepository documents)
 {
     private readonly IDocumentRepository _documents = documents;
 
-    public async Task<DocumentDetailsResponse?> HandleAsync(Guid documentId, CancellationToken ct)
+    public async Task<DocumentDetailsResponse?> HandleAsync(Guid documentId, CancellationToken ct = default)
     {
         var document = await _documents.GetAsync(documentId, ct);
 
