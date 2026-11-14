@@ -12,7 +12,7 @@ public class DocumentController : Controller
 {
     private const long MaxFileSizeBytes = 10 * 1024 * 1024;
 
-    [HttpPost(Name = "Upload")]
+    [HttpPost("upload")]
     [Consumes("multipart/form-data")]
     public async Task<IActionResult> UploadDocumentAsync(IFormFile? file, [FromServices] UploadDocumentHandler handler)
     {
@@ -30,9 +30,8 @@ public class DocumentController : Controller
 
         var document = await handler.HandleAsync(stream, file.FileName, file.ContentType, file.Length);
 
-        return CreatedAtRoute(
-            routeName: "GetDocument",
-            routeValues: new { id = document.Id },
+        return Created(
+            $"/api/v1/Document/getdocument/{document.Id}",
             value: new
             {
                 document.Id,
@@ -45,7 +44,7 @@ public class DocumentController : Controller
 
 
 
-    [HttpGet(Name = "GetDocument/{id:guid}")]
+    [HttpGet("getdocument/{id:guid}")]
     public async Task<IActionResult> GetDocumentByIdAsync(Guid id, [FromServices] GetDocumentHandler handler)
     {
         var document = await handler.HandleAsync(id);
